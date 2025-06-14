@@ -1,0 +1,119 @@
+backend:
+  name: github
+  repo: Rodriguez-Diego-web/kiramariecremer
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "seo"
+    label: "SEO Einstellungen"
+    folder: "src/content/seo"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Titel", name: "title", widget: "string"}
+      - {label: "Beschreibung", name: "description", widget: "text"}
+      - {label: "Keywords", name: "keywords", widget: "string", required: false}
+      - {label: "Autor", name: "author", widget: "string", required: false}
+      - {label: "OG Titel", name: "og_title", widget: "string", required: false}
+      - {label: "OG Beschreibung", name: "og_description", widget: "text", required: false}
+      - {label: "OG Bild", name: "og_image", widget: "image", required: false}
+      - {label: "Twitter Card", name: "twitter_card", widget: "select", options: ["summary", "summary_large_image"], default: "summary_large_image", required: false}
+      - {label: "Canonical URL", name: "canonical_url", widget: "string", required: false}
+
+  - name: "press"
+    label: "Presse"
+    folder: "src/content/press"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Titel", name: "title", widget: "string"}
+      - {label: "Publikation", name: "publication", widget: "string"}
+      - {label: "URL", name: "url", widget: "string"}
+      - {label: "Datum", name: "date", widget: "datetime"}
+      - {label: "Kurzbeschreibung", name: "excerpt", widget: "text"}
+      - {label: "Bild", name: "image", widget: "image", required: false}
+      - {label: "Tag", name: "tag", widget: "string", default: "Presse", required: false}
+      - {label: "Reihenfolge", name: "order", widget: "number", required: false}
+
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "src/content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Autor", name: "author", widget: "string"}
+      - {label: "Position", name: "position", widget: "string", required: false}
+      - {label: "Zitat", name: "quote", widget: "text"}
+      - {label: "Bild", name: "image", widget: "image", required: false}
+      - {label: "Reihenfolge", name: "order", widget: "number", required: false}
+
+  - name: "whatthework-testimonials"
+    label: "What The Work Testimonials"
+    folder: "src/content/whatthework-testimonials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Autor", name: "author", widget: "string"}
+      - {label: "Position", name: "position", widget: "string", required: false}
+      - {label: "Zitat", name: "quote", widget: "text"}
+      - {label: "Bild", name: "image", widget: "image", required: false}
+      - {label: "Reihenfolge", name: "order", widget: "number", required: false}
+
+  - name: "partner_logos"
+    label: "Partner Logos"
+    folder: "src/content/partner_logos"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Bild", name: "image", widget: "image"}
+      - {label: "Alt Text", name: "alt_text", widget: "string"}
+      - {label: "Reihenfolge", name: "order", widget: "number", required: false}
+
+  - name: "about"
+    label: "Über mich"
+    files:
+      - label: "Über mich Seite"
+        name: "about"
+        file: "src/content/about.md"
+        fields:
+          - {label: "Name", name: "name", widget: "string"}
+          - {label: "Seitentitel", name: "page_title", widget: "string"}
+          - {label: "Haupttext", name: "body", widget: "markdown"}
+          - {label: "Untertitel", name: "headlineMain", widget: "markdown"}
+          - {label: "Unterer Text", name: "body_bottom", widget: "markdown"}
+          - {label: "Profilbild", name: "profile_image", widget: "image"}
+          - {label: "Linkes Bild 1", name: "left_image_1", widget: "image"}
+          - {label: "Linkes Bild 2", name: "left_image_2", widget: "image"}
+          - {label: "Rechtes Bild", name: "right_image", widget: "image"}
+
+  - name: "whatthework-about"
+    label: "What The Work - Über"
+    files:
+      - label: "What The Work Über Seite"
+        name: "whatthework-about"
+        file: "src/content/whatthework-about.md"
+        fields:
+          - {label: "Überschrift", name: "headline", widget: "string"}
+          - {label: "Textblock 1", name: "text_block_1", widget: "text"}
+          - {label: "Textblock 2", name: "text_block_2", widget: "text"}
+          - {label: "Button Text", name: "button_text", widget: "string"}
+          - {label: "Button Link", name: "button_link", widget: "string"}
+          - {label: "Profilbild", name: "profile_image", widget: "image"}
+
+  - name: "social-display"
+    label: "Social Media Anzeige"
+    folder: "src/content/social-display"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Plattform Name", name: "name", widget: "string"}
+      - {label: "URL", name: "url", widget: "string"}
+      - {label: "Follower Anzahl (Anzeige)", name: "followersDisplayString", widget: "string", hint: "z.B. '52.000' oder '11.5K'"}
+      - {label: "Follower Anzahl (Roh)", name: "rawCount", widget: "number", required: false, hint: "Numerischer Wert für Animationen"}
+      - {label: "Reihenfolge", name: "order", widget: "number", required: false}

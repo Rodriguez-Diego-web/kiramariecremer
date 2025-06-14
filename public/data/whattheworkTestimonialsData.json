@@ -1,0 +1,25 @@
+{
+  "testimonials": [
+    {
+      "author": "Susanna",
+      "position": null,
+      "quote": "Schön ist er. Unaufdringlich, authentisch und inhaltsgeladen.",
+      "image": null,
+      "order": 5
+    },
+    {
+      "author": "Jonas",
+      "position": null,
+      "quote": "Gut zu lesen, nicht zu lang, man kann tiefer einsteigen, muss man aber nicht. Gab mir heute einen Booster für den Tag.",
+      "image": null,
+      "order": 10
+    },
+    {
+      "author": "Yasmin",
+      "position": null,
+      "quote": "Sehr frisch und inspirierend, wie alles, was ich bis dato von dir lese und höre. Freue mich auf die weiteren Newsletter, Inspirationen und eine spannende Reise mit dir.",
+      "image": null,
+      "order": 15
+    }
+  ]
+}

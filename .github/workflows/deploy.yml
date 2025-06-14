@@ -1,0 +1,97 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    # 1. Code auschecken
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    # 2. Node.js Setup
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    # 3. Dependencies installieren
+    - name: Install dependencies
+      run: npm ci
+    
+    # 4. Daten Dateien generieren
+    - name: Generate data files
+      run: |
+        node scripts/generate-press-data.js
+        node scripts/generate-beehiiv-feed-data.js
+        node scripts/generate-podcast-data.js
+        node scripts/generate-testimonials-data.js
+        node scripts/generate-whatthework-testimonials-data.js
+        node scripts/generate-partner-logos-data.js
+        node scripts/generate-about-data.js
+        node scripts/generate-social-display-data.js
+        node scripts/generate-seo-data.js
+        node scripts/generate-whatthework-about-data.js
+    
+    # 5. Build ausführen (führt automatisch alle Scripts aus!)
+    - name: Build project
+      run: npm run build
+    
+    # 6. Prepare deployment directory
+    - name: Prepare deployment directory
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: |
+        ssh -o StrictHostKeyChecking=no -i <(echo "${{ secrets.SERVER_SSH_KEY }}") ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} "
+        mkdir -p /var/www/kiramaricremer.de
+        
+        # Backup existing deployment if it exists
+        if [ -d "/var/www/kiramaricremer.de/current" ]; then
+          mv /var/www/kiramaricremer.de/current /var/www/kiramaricremer.de/backup-$(date +%Y%m%d-%H%M%S)
+        fi
+        
+        # Create new deployment directory
+        mkdir -p /var/www/kiramaricremer.de/current
+        "
+    
+    # 7. Deploy zu Florians Server (nur bei Push auf main)
+    - name: Deploy to server
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: ${{ secrets.SERVER_HOST }}
+        username: ${{ secrets.SERVER_USERNAME }}
+        key: ${{ secrets.SERVER_SSH_KEY }}
+        source: "build/*"
+        target: /var/www/kiramaricremer.de/current/
+        strip_components: 1
+    
+    # 8. Server-Konfiguration aktualisieren
+    - name: Set permissions and restart services
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: |
+        ssh -o StrictHostKeyChecking=no -i <(echo "${{ secrets.SERVER_SSH_KEY }}") ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} "
+        # Set correct permissions
+        chown -R www-data:www-data /var/www/kiramaricremer.de/current
+        chmod -R 755 /var/www/kiramaricremer.de/current
+        
+        # Restart web server if needed
+        systemctl reload nginx || systemctl reload apache2 || true
+        
+        # Clean up old backups (keep last 3)
+        cd /var/www/kiramaricremer.de && ls -t backup-* 2>/dev/null | tail -n +4 | xargs rm -rf || true
+        "
+    
+    # 9. Deployment complete
+    - name: Deployment complete
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: |
+        echo "✅ Deployment successful!"
+        echo "Website available at: https://www.kiramaricremer.de"
+        echo "CMS available at: https://www.kiramaricremer.de/admin/" 

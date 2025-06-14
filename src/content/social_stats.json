@@ -1,0 +1,19 @@
+{
+  "platforms": [
+    {
+      "name": "LinkedIn",
+      "count": 52000,
+      "url": "https://de.linkedin.com/in/kiramariecremer"
+    },
+    {
+      "name": "Instagram",
+      "count": 12000,
+      "url": "https://www.instagram.com/kiramariecremer"
+    },
+    {
+      "name": "Spotify",
+      "count": 2700,
+      "url": "https://open.spotify.com/episode/5IRWSdKqXpwKD4QBTqf6GU"
+    }
+  ]
+}
