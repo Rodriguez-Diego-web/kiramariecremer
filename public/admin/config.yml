@@ -2,6 +2,9 @@ backend:
   name: github
   repo: Rodriguez-Diego-web/kiramariecremer
   branch: main
+  # Use GitHub OAuth with PHP handler
+  base_url: https://www.kiramariecremer.de
+  auth_endpoint: /admin/auth.php
 
 media_folder: "public/uploads"
 public_folder: "/uploads"

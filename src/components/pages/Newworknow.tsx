@@ -7,13 +7,13 @@ import BeehiivFeedSection from '../sections/BeehiivFeedSection';
 
 
 const PageWrapper = styled.div`
-  background-color: #F9F7F4; /* Light cream background for the page below blue header */
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  position: relative; /* Immer position relative für den Container */
+  background-color: #F9F7F4; 
+  overflow-x: hidden;
+  position: relative;
 `;
 
 const BlueHeaderSection = styled.div`
-  background-color: #8facff; /* User specified blue */
+  background-color: #8facff;
   padding: 40px 20px; 
   display: flex;
   justify-content: center;
@@ -30,7 +30,7 @@ const LogoImage = styled.img`
   max-height: 180px; 
   max-width: 90%; 
   display: block; 
-  margin: 50px auto -10px auto; /* Center the logo properly */
+  margin: 50px auto -10px auto;
   @media (max-width: 767px) {
     max-height: 50px;
     margin: 0 auto;
@@ -41,12 +41,11 @@ const MainContentSection = styled.div`
   padding: 60px 20px;
   max-width: 1200px;
   margin: 0 auto;
-  position: relative; /* For absolute positioned mockups */
+  position: relative;
   
-  /* iPad mini - mehr Padding für Inhalt */
   @media (min-width: 768px) and (max-width: 820px) {
     padding: 40px 30px;
-    overflow-x: hidden; /* Verhindert horizontales Scrollen */
+    overflow-x: hidden;
   }
   
   @media (max-width: 767px) {
@@ -62,7 +61,7 @@ const GridLayout = styled.div`
     "subscription mockups"
     "text mockups";
   gap: 50px;
-  align-items: start; /* Changed from center to start for better alignment */
+  align-items: start;
 
   @media (max-width: 767px) {
     grid-template-columns: 1fr;
@@ -76,7 +75,7 @@ const GridLayout = styled.div`
   }
   
   @media (max-width: 480px) {
-    gap: 15px; /* Reduced gap but not zero */
+    gap: 15px;
     margin-bottom: 30px;
   }
 `;
@@ -85,7 +84,7 @@ const TextContainer = styled.div`
   grid-area: text;
   @media (max-width: 767px) {
     order: 4;
-    margin-top: 30px; /* Reduced margin */
+    margin-top: 30px;
   }
   
   @media (max-width: 480px) {
@@ -101,7 +100,7 @@ const Headline = styled.h2`
   color: #000000;
   margin-bottom: 25px;
   line-height: 1.3;
-  max-width: 100%; /* Changed from fixed width */
+  max-width: 100%;
   width: 100%;
   
   @media (max-width: 767px) {
@@ -120,8 +119,6 @@ const Headline = styled.h2`
   }
 `;
 
-// Formular-Styling jetzt direkt per Inline-Styles
-
 const SubscriptionBarWrapper = styled.div`
   grid-area: subscription;
   display: flex;
@@ -132,42 +129,40 @@ const SubscriptionBarWrapper = styled.div`
     order: 2;
     margin-top: 15px; 
     margin-bottom: 20px;
-    justify-content: center; /* Zentriert für Mobile */
+      justify-content: center;
     
     > div {
-      width: 95% !important; /* Fast volle Breite für Mobile */
+      width: 95% !important;
       max-width: 400px !important;
     }
     
     iframe {
       width: 100% !important;
-      height: 42px !important; /* Angepasste Höhe für Mobile */
+      height: 42px !important;
       border-radius: 15px !important;
       border: 1px solid #8facff !important;
     }
   }
   
-  /* iPad mini Input-Feld - volle Breite */
   @media (min-width: 768px) and (max-width: 820px) {
-    justify-content: flex-start; /* Links ausgerichtet wie Desktop */
+    justify-content: flex-start;
     margin-top: 25px;
     margin-bottom: 30px;
     width: 100%;
     
     > div {
-      width: 100% !important; /* Volle Breite */
-      max-width: 500px !important; /* Wie Desktop */
+      width: 100% !important;
+      max-width: 500px !important;
     }
     
     iframe {
       width: 100% !important;
-      height: 42px !important; /* Original Höhe */
-      border-radius: 15px !important; /* Original Border-Radius */
-      border: 1px solid #8facff !important; /* Original Border */
+      height: 42px !important;
+      border-radius: 15px !important;
+      border: 1px solid #8facff !important;
     }
   }
   
-  /* iPad Air und Pro Input-Feld */
   @media (min-width: 821px) and (max-width: 1024px) {
     justify-content: center;
     margin-top: 25px;
@@ -181,7 +176,6 @@ const SubscriptionBarWrapper = styled.div`
     }
   }
   
-  /* Große Desktop-Bildschirme - 1968px und ähnlich */
   @media (min-width: 1900px) {
     justify-content: flex-start;
     margin-top: 30px;
@@ -189,12 +183,12 @@ const SubscriptionBarWrapper = styled.div`
     
     > div {
       width: 100% !important;
-      max-width: 600px !important; /* Größer für große Bildschirme */
+      max-width: 600px !important;
     }
     
     iframe {
       width: 100% !important;
-      height: 53px !important; /* Etwas höher für große Bildschirme */
+      height: 53px !important;
       border-radius: 15px !important;
       border: 1px solid #8facff !important;
     }
@@ -211,7 +205,7 @@ const DescriptionText = styled.p`
   @media (max-width: 767px) {
     font-size: 0.9rem;
     line-height: 1.5;
-    max-width: 100%; /* Allow full width on mobile */
+    max-width: 100%;
   }
 `;
 
@@ -242,8 +236,8 @@ const StyledMockupImagesWrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 0;
-  margin-right: 0; /* Reset this */
-  min-height: 500px; /* Reasonable container height */
+  margin-right: 0;
+  min-height: 500px;
   width: 100%;
 
   .mockup-container {
@@ -253,7 +247,7 @@ const StyledMockupImagesWrapper = styled.div`
 
   .mockup-main {
     z-index: 1;
-    left: 15%; /* Back to working position */
+    left: 15%;
     top: -200px;
     transform: translate(0, 0);
     img {
@@ -265,7 +259,7 @@ const StyledMockupImagesWrapper = styled.div`
 
   .mockup-secondary {
     z-index: 2;
-    left: 18%; /* Back to working position */
+    left: 18%;
     top: -200px;
     transform: translate(0, 0);
     img {
@@ -275,54 +269,52 @@ const StyledMockupImagesWrapper = styled.div`
     }
   }
   
-  /* iPad mini spezifisch - kleinere Bilder wegen Bildschirmgröße */
   @media (min-width: 768px) and (max-width: 820px) {
     margin-top: 0;
     min-height: 400px;
     
     .mockup-main {
-      left: 5%; /* Weiter rechts damit nicht abgeschnitten */
+      left: 5%;
       top: -150px;
       transform: translate(0, 0);
       img {
-        width: 380px; /* Kleiner für iPad mini */
+        width: 380px;
         min-width: 380px;
         height: auto;
       }
     }
     .mockup-secondary {
-      left: 8%; /* Weiter rechts */
+      left: 8%;
       top: -30px;
       transform: translate(0, 0);
       img {
-        width: 380px; /* Kleiner für iPad mini */
+        width: 380px;
         min-width: 380px;
         height: auto;
       }
     }
   }
   
-  /* iPad Air und Pro - größere Bilder */
   @media (min-width: 821px) and (max-width: 1024px) {
     margin-top: 0;
     min-height: 500px;
     
     .mockup-main {
-      left: -5%; /* Weiter links wie im Ziel-Bild */
+      left: -5%;
       top: -200px;
       transform: translate(0, 0);
       img {
-        width: 450px; /* Größer für iPad Air/Pro */
+        width: 450px;
         min-width: 450px;
         height: auto;
       }
     }
     .mockup-secondary {
-      left: -2%; /* Weiter links, näher zusammen */
+      left: -2%;
       top: -50px;
       transform: translate(0, 0);
       img {
-        width: 450px; /* Größer für iPad Air/Pro */
+        width: 450px;
         min-width: 450px;
         height: auto;
       }
@@ -335,7 +327,6 @@ const StyledMockupImagesWrapper = styled.div`
   
 
   
-  /* Mobile - NUR für echte Mobile-Geräte */
   @media (max-width: 767px) {
     min-height: 350px;
     margin-top: 20px;
@@ -367,21 +358,21 @@ const StyledMockupImagesWrapper = styled.div`
     margin-top: 15px;
     
     .mockup-main {
-      left: 15%; /* Same as desktop */
+      left: 15%;
       top: -15px;
-      transform: translate(0, 0); /* Same as desktop */
+      transform: translate(0, 0);
       img {
-        width: 220px; /* Smaller for small mobile */
+        width: 220px;
         min-width: 220px;
         height: auto;
       }
     }
     .mockup-secondary {
-      left: 18%; /* Same as desktop */
+      left: 18%;
       top: -15px;
-      transform: translate(0, 0); /* Same as desktop */
+      transform: translate(0, 0);
       img {
-        width: 220px; /* Smaller for small mobile */
+        width: 220px;
         min-width: 220px;
         height: auto;
       }
@@ -392,7 +383,6 @@ const StyledMockupImagesWrapper = styled.div`
 const StyledMockupImage = styled.img`
   display: block;
   height: auto;
-  /* Removed border-radius and box-shadow for clean mockups */
 `;
 
 

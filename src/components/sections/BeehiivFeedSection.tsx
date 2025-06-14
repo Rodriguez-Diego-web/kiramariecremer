@@ -49,10 +49,9 @@ const SectionTitle = styled.h2`
     border-radius: 0;
   }
   
-  /* iPad Air und Pro - gelbe Box noch höher */
   @media (min-width: 821px) and (max-width: 1024px) {
     &::after {
-      bottom: 25px !important; /* 5px höher */
+      bottom: 25px !important;
     }
   }
 
@@ -64,10 +63,9 @@ const SectionTitle = styled.h2`
     display: inline;
   }
   
-  /* iPad mini spezifisch */
   @media (min-width: 768px) and (max-width: 820px) {
     font-size: 3.2rem; 
-    margin-top: -117px; /* Gleich wie iPad Pro */
+    margin-top: -117px;
     padding: 6px 20px; 
     
     &::after {
@@ -75,19 +73,17 @@ const SectionTitle = styled.h2`
     }
   }
   
-  /* iPad Air und Pro */
-  @media (min-width: 821px) and (max-width: 1024px) {
+    @media (min-width: 821px) and (max-width: 1024px) {
     font-size: 3.5rem; 
-    margin-top: -117px; /* Gleich wie iPad Pro */
+    margin-top: -117px;
     padding: 8px 25px; 
     
     &::after {
       height: 50% !important;
-      bottom: 20px !important; /* Box VIEL höher mit !important */
+      bottom: 20px !important;
     }
   }
   
-  /* Desktop größer als iPad */
   @media (min-width: 1025px) {
     margin-top: -113px; 
     font-size: 3.2rem;

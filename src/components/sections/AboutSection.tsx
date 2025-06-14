@@ -274,36 +274,30 @@ const MainImageContainer = styled.div`
   width: 100%;
   margin: 0 auto; 
   
-  /* Professional fluid responsive positioning */
   max-width: clamp(60%, calc(60% + (100vw - 480px) * 0.025), 80%);
   transform: translate(
     clamp(0px, calc((100vw - 480px) * 0.04), 40px),
     clamp(50px, calc(50px + (100vw - 480px) * 0.25), 320px)
   );
   
-  /* iPad main image adjustment - weiter rechts und tiefer */
   @media (min-width: 768px) and (max-width: 1024px) {
     transform: translate(60px, 230px);
   }
   
-  /* iPad Pro specific - Bild höher */
   @media (min-width: 1024px) and (max-width: 1366px) and (orientation: portrait) {
     transform: translate(60px, 180px);
   }
   
-  /* Lower middle range - 1025px to 1100px */
   @media (min-width: 1025px) and (max-width: 1100px) {
     transform: translate(25px, 200px);
     max-width: 75%;
   }
   
-  /* Upper middle range - 1101px to 1199px */
   @media (min-width: 1101px) and (max-width: 1199px) {
     transform: translate(30px, 160px);
     max-width: 78%;
   }
   
-  /* Large screens - Bild höher */
   @media (min-width: 1200px) {
     transform: translate(40px, 110px);
     max-width: 80%;
@@ -335,7 +329,6 @@ const AuthorBioTextWrapper = styled.div`
   font-size: 1.1rem;
   line-height: 1.9;
   
-  /* iPad text adjustment - breiter und weiter links */
   @media (min-width: 768px) and (max-width: 1024px) {
     transform: translate(0px, 190px);
     max-width: 110%;
@@ -343,7 +336,6 @@ const AuthorBioTextWrapper = styled.div`
     padding: 0 20px;
   }
   
-  /* iPad Pro specific - Text nicht abgeschnitten */
   @media (min-width: 1024px) and (max-width: 1366px) and (orientation: portrait) {
     transform: translate(0px, 140px);
     max-width: 90%;
@@ -351,7 +343,6 @@ const AuthorBioTextWrapper = styled.div`
     padding: 0 20px;
   }
   
-  /* Lower middle range text - 1025px to 1100px */
   @media (min-width: 1025px) and (max-width: 1100px) {
     transform: translate(0px, 200px);
     max-width: 110%;
@@ -361,7 +352,6 @@ const AuthorBioTextWrapper = styled.div`
     line-height: 1.8;
   }
   
-  /* Upper middle range text - 1101px to 1199px */
   @media (min-width: 1101px) and (max-width: 1199px) {
     transform: translate(0px, 120px);
     max-width: 115%;
@@ -370,15 +360,13 @@ const AuthorBioTextWrapper = styled.div`
     font-size: 1rem;
     line-height: 1.8;
   }
-  
-  /* Desktop adjustments */
+
   @media (min-width: 1024px) {
     padding: 0;
     font-size: 1rem;
     line-height: 1.8;
   }
   
-  /* Large screens - Text höher (proportional zum Bild) */
   @media (min-width: 1200px) {
     transform: translate(0px, 40px);
     max-width: 120%;
