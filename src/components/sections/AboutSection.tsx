@@ -530,7 +530,7 @@ const AboutSection: React.FC = () => {
 
   const mainImage = aboutData.profile_image || '/images/image-small.webp';
   const smallImage1 = aboutData.left_image_1 || '/images/RSE_6158-small.webp';
-  const smallImage2 = aboutData.left_image_2 || '/images/img2.jpg';
+  const smallImage2 = aboutData.left_image_2 || '/uploads/img2.jpg';
   const smallImage3 = aboutData.right_image || '/images/image-small.webp';
 
   return (

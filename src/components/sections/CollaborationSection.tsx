@@ -372,8 +372,8 @@ const CollaborationSection: React.FC = () => {
       buttonColor: '#e53811' 
     },
     {
-      imageSrc: '/images/img_5998.jpg', 
-      imageSrcSmall: '/images/img_5998.jpg',
+      imageSrc: '/uploads/img_5998.jpg', 
+      imageSrcSmall: '/uploads/img_5998.jpg',
       buttonText: 'SPEAKINGS',
       link: '#kontakt', 
       buttonColor: '#86a4fd' 
@@ -386,8 +386,8 @@ const CollaborationSection: React.FC = () => {
       buttonColor: '#ffe83c' 
     },
     {
-      imageSrc: '/images/img_5189.jpg', 
-      imageSrcSmall: '/images/img_5189.jpg',
+      imageSrc: '/uploads/img_5189.jpg', 
+      imageSrcSmall: '/uploads/img_5189.jpg',
       buttonText: 'MEDIAKIT-DOWNLOAD', 
       link: '/mediakit/mediakit.pdf', 
       buttonColor: '#cdafff' 

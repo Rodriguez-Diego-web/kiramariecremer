@@ -114,22 +114,22 @@ else
     echo "❌ KMClogo.webp MISSING"
 fi
 
-if [ -f "public_html/images/img_5189.jpg" ]; then
-    echo "✅ img_5189.jpg found"
+if [ -f "public_html/uploads/img_5189.jpg" ]; then
+    echo "✅ img_5189.jpg found in uploads"
 else
-    echo "❌ img_5189.jpg MISSING"
+    echo "❌ img_5189.jpg MISSING in uploads"
 fi
 
-if [ -f "public_html/images/img_5998.jpg" ]; then
-    echo "✅ img_5998.jpg found"
+if [ -f "public_html/uploads/img_5998.jpg" ]; then
+    echo "✅ img_5998.jpg found in uploads"
 else
-    echo "❌ img_5998.jpg MISSING"
+    echo "❌ img_5998.jpg MISSING in uploads"
 fi
 
-if [ -f "public_html/images/img2.jpg" ]; then
-    echo "✅ img2.jpg found"
+if [ -f "public_html/uploads/img2.jpg" ]; then
+    echo "✅ img2.jpg found in uploads"
 else
-    echo "❌ img2.jpg MISSING"
+    echo "❌ img2.jpg MISSING in uploads"
 fi
 
 echo "✅ Build complete! Website ready in public_html/"
