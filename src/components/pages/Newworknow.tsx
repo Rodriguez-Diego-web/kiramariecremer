@@ -161,7 +161,7 @@ const SubscriptionBarWrapper = styled.div`
     
     iframe {
       width: 100% !important;
-      height: 41px !important; /* Original Höhe */
+      height: 42px !important; /* Original Höhe */
       border-radius: 15px !important; /* Original Border-Radius */
       border: 1px solid #8facff !important; /* Original Border */
     }
@@ -181,7 +181,24 @@ const SubscriptionBarWrapper = styled.div`
     }
   }
   
-
+  /* Große Desktop-Bildschirme - 1968px und ähnlich */
+  @media (min-width: 1900px) {
+    justify-content: flex-start;
+    margin-top: 30px;
+    margin-bottom: 35px;
+    
+    > div {
+      width: 100% !important;
+      max-width: 600px !important; /* Größer für große Bildschirme */
+    }
+    
+    iframe {
+      width: 100% !important;
+      height: 53px !important; /* Etwas höher für große Bildschirme */
+      border-radius: 15px !important;
+      border: 1px solid #8facff !important;
+    }
+  }
 `;
 
 const DescriptionText = styled.p`
