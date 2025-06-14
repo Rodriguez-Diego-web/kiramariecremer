@@ -1,5 +1,7 @@
 # Kira Marie Cremer Website
 
+This is the official website for Kira Marie Cremer.
+
 Eine moderne React-Website für Autorin, Dozentin und Podcast-Host Kira Marie Cremer, entwickelt mit TypeScript und optimiert für Performance und SEO.
 
 ## 🚀 Technologie-Stack
