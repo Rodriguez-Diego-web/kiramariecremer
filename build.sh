@@ -30,5 +30,14 @@ if [ -d "public_html" ]; then
 fi
 mv build public_html
 
+echo "🔧 Ensuring .htaccess is in place..."
+# Copy .htaccess to root of public_html if it exists in public/
+if [ -f "public/.htaccess" ]; then
+    cp public/.htaccess public_html/.htaccess
+    echo "✅ .htaccess copied to public_html root"
+else
+    echo "⚠️ No .htaccess found in public/"
+fi
+
 echo "✅ Build complete! Website ready in public_html/"
 echo "🌐 Website can now be served from public_html/" 
