@@ -85,6 +85,14 @@ else
     echo "⚠️ No apache-assets-config.txt found"
 fi
 
+# Copy nginx configuration for server admin
+if [ -f "nginx-spa-config.txt" ]; then
+    cp nginx-spa-config.txt public_html/nginx-spa-config.txt
+    echo "✅ Nginx SPA configuration copied for server admin"
+else
+    echo "⚠️ No nginx-spa-config.txt found"
+fi
+
 # List final structure
 echo "📂 Final public_html structure:"
 ls -la public_html/ | head -10
