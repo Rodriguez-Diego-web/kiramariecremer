@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// Main container for the entire section
 const SectionWrapper = styled.section`
   position: relative;
   padding-top: 150px; 
@@ -10,7 +9,6 @@ const SectionWrapper = styled.section`
   font-family: 'Montserrat', sans-serif;
 `;
 
-// The large, overlapping title
 const SectionTitle = styled.h2`
   font-family: 'Kingdom', serif; 
   font-size: 5rem; 
