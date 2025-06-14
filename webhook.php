@@ -5,7 +5,7 @@
  * Setup:
  * 1. Diese Datei auf den Server hochladen
  * 2. In GitHub Repo Settings > Webhooks:
- *    - URL: https://domain.de/webhook.php
+ *    - URL: https://www.kiramariecremer.de/webhook.php
  *    - Content type: application/json
  *    - Events: Just the push event
  *    - Secret: (optional, für mehr Sicherheit)
