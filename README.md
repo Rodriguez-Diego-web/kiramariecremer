@@ -49,10 +49,9 @@ node scripts/generate-social-display-data.js # Social Media Zahlen
 
 ### Development
 ```bash
-npm install          # Dependencies installieren
-npm run dev          # Development Server starten
-npm run build        # Production Build
-npm run preview      # Build-Preview testen
+npm install          
+npm start           
+npm run build        
 ```
 
 ## 🎯 Content Management
