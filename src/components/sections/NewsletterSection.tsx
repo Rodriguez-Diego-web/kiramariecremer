@@ -153,7 +153,8 @@ const KingdomTitle = styled.h3`
     }
   }
   
-  @media (max-width: 1024px) and (min-width: 768px) {
+  /* iPad Pro, Air, Mini - alle gleich behandeln */
+  @media (min-width: 768px) and (max-width: 1024px) {
     font-size: 4.5rem;
     right: 80px;
     padding: 0 20px;
@@ -163,11 +164,6 @@ const KingdomTitle = styled.h3`
       height: 32%;
       bottom: 16%;
     }
-  }
-  
-  @media (max-width: 991px) {
-    font-size: 3.5rem;
-    right: 60px;
   }
   
   @media (max-width: 767px) {
@@ -188,7 +184,13 @@ const NewsletterContent = styled.div`
   gap: 40px;
   align-items: center;
   
-  @media (max-width: 991px) {
+  /* iPad Pro, Air, Mini - Desktop Layout beibehalten */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  
+  @media (max-width: 767px) {
     grid-template-columns: 1fr;
     gap: 30px;
   }
@@ -199,7 +201,12 @@ const MockupImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   
-  @media (max-width: 991px) {
+  /* iPad Pro, Air, Mini - normale Reihenfolge wie Desktop */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    order: 0;
+  }
+  
+  @media (max-width: 767px) {
     order: 1;
   }
 `;
@@ -224,19 +231,20 @@ const MockupImagesWrapper = styled.div`
     z-index: 2;
   }
   
-  @media (max-width: 1024px) and (min-width: 768px) {
+  /* iPad Pro, Air, Mini - Desktop-ähnliches Layout */
+  @media (min-width: 768px) and (max-width: 1024px) {
     flex-direction: row;
     justify-content: center;
     align-items: center;
     
     .mockup-1 {
-      margin-right: -550px;
-      max-width: 80%;
+      margin-right: -520px;
+      max-width: 85%;
       z-index: 1;
     }
     
     .mockup-2 {
-      max-width: 80%;
+      max-width: 85%;
       z-index: 2;
     }
   }
@@ -266,6 +274,20 @@ const MockupImagesWrapper = styled.div`
       max-width: 75%;
     }
   }
+  
+  /* NUR iPad Air - NICHT iPad Pro */
+  @media (min-width: 810px) and (max-width: 830px) {
+    .mockup-1 {
+      margin-right: -520px !important;
+      max-width: 75% !important; /* Kleiner nur für iPad Air */
+      z-index: 1;
+    }
+    
+    .mockup-2 {
+      max-width: 75% !important;
+      z-index: 2;
+    }
+  }
 `;
 
 const MockupImage = styled.img`
@@ -285,14 +307,17 @@ const TextContentContainer = styled.div`
   justify-content: center;
   gap: 20px;
   
-  @media (max-width: 1024px) and (min-width: 768px) {
-    align-items: center;
+  /* iPad Pro, Air, Mini - linksbündig wie Desktop */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    align-items: flex-start;
+    text-align: left;
   }
   
-  @media (max-width: 991px) {
+  @media (max-width: 767px) {
     order: 2;
     text-align: center;
     gap: 15px;
+    align-items: center;
   }
 `;
 
@@ -323,9 +348,16 @@ const IframeContainer = styled.div`
   margin: 20px auto;
   
   iframe {
+    height: 42px !important;
+    
     @media (max-width: 768px) {
       height: 42px !important;
     }
+  }
+  
+  /* NUR iPad Air - NICHT iPad Pro */
+  @media (min-width: 810px) and (max-width: 830px) {
+    margin: 24px auto !important; /* Mehr Abstand nur für iPad Air */
   }
 `;
 
