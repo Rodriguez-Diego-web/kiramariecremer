@@ -13,12 +13,11 @@ interface FeedItemData {
   categories: string[];
 }
 
-// Fallback image if a feed item doesn't have one or if the path in JSON is null
 const FALLBACK_IMAGE_URL = '/uploads/default-newsletter-image.webp'; 
 
 const SectionWrapper = styled.section`
   padding: 80px 20px;
-  background-color: #8facff; // Light blue background from image
+  background-color: #8facff; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,7 +29,7 @@ const SectionTitle = styled.h2`
   font-size: 3rem;
   font-weight: normal;
   color: #000000;
-  margin-top: -115px; /* Base desktop value */
+  margin-top: -115px; 
   margin-bottom: 13px;
   padding: 5.5px 20px;
   display: inline-block;
@@ -49,6 +48,13 @@ const SectionTitle = styled.h2`
     z-index: -1;
     border-radius: 0;
   }
+  
+  /* iPad Air und Pro - gelbe Box noch höher */
+  @media (min-width: 821px) and (max-width: 1024px) {
+    &::after {
+      bottom: 25px !important; /* 5px höher */
+    }
+  }
 
   .mobile-title {
     display: none;
@@ -58,28 +64,38 @@ const SectionTitle = styled.h2`
     display: inline;
   }
   
-  /* iPad-spezifische Anpassungen - alle iPad-Größen */
-  @media (max-width: 1024px) and (min-width: 768px) {
-    font-size: 3.5rem; /* Größer für iPad wie gewünscht */
-    margin-top: -120px; /* Angepasst für größeren Titel */
-    padding: 8px 25px; /* Mehr Padding für größeren Titel */
+  /* iPad mini spezifisch */
+  @media (min-width: 768px) and (max-width: 820px) {
+    font-size: 3.2rem; 
+    margin-top: -117px; /* Gleich wie iPad Pro */
+    padding: 6px 20px; 
     
     &::after {
-      height: 45%; /* Angepasst für größeren Titel */
+      height: 50%; 
     }
   }
   
-  /* iPad Pro size (1067x773) */
-  @media (max-width: 1200px) and (min-width: 1025px) {
-    margin-top: -113px; /* Restore to original value that was working */
+  /* iPad Air und Pro */
+  @media (min-width: 821px) and (max-width: 1024px) {
+    font-size: 3.5rem; 
+    margin-top: -117px; /* Gleich wie iPad Pro */
+    padding: 8px 25px; 
+    
+    &::after {
+      height: 50% !important;
+      bottom: 20px !important; /* Box VIEL höher mit !important */
+    }
+  }
+  
+  /* Desktop größer als iPad */
+  @media (min-width: 1025px) {
+    margin-top: -113px; 
     font-size: 3.2rem;
   }
 
-  /* Medium tablet (944x770) - wird jetzt von iPad-Query abgedeckt */
-  
   @media (max-width: 767px) {
     font-size: 2rem;
-    margin-top: -105px; /* Restore to original working value */
+    margin-top: -105px; 
     
     .mobile-title {
       display: inline;
@@ -115,16 +131,16 @@ const FeedGrid = styled.div`
 
 const FeedCard = styled.a`
   background-color: #fff;
-  border-radius: 0; // Eckig
-  padding: 0; // Padding will be handled by inner containers
+  border-radius: 0; 
+  padding: 0; 
   text-decoration: none;
-  position: relative; // For positioning category tags and icons
+  position: relative; 
   color: inherit;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  min-height: 400px; // Ensure cards have a consistent minimum height
+  min-height: 400px; 
 
   &:hover {
     transform: translateY(-5px);
@@ -136,10 +152,10 @@ const CardImage = styled.img`
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 0; // Eckig
+  border-radius: 0; 
   margin-bottom: 15px;
-  background-color: #f0f0f0; // Placeholder color if image is missing
-  border-top-left-radius: 0; // Ensure top corners are square with card
+  background-color: #f0f0f0; 
+  border-top-left-radius: 0; 
   border-top-right-radius: 0;
 `;
 
@@ -147,7 +163,7 @@ const CardContentWrapper = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: column;
-  flex-grow: 1; // Allows content to fill space and push author to bottom
+  flex-grow: 1; 
 `;
 
 const CardCategoryContainer = styled.div`
@@ -165,7 +181,7 @@ const CategoryTag = styled.span`
   font-family: 'Montserrat', sans-serif;
   font-size: 0.7rem;
   padding: 3px 8px;
-  border-radius: 0; // Eckig
+    border-radius: 0; 
   text-transform: uppercase;
 `;
 
@@ -176,9 +192,8 @@ const CardIconsContainer = styled.div`
   display: flex;
   gap: 8px;
   z-index: 1;
-  // Placeholder for icons - replace with actual SVGs or font icons
   span {
-    font-size: 1.2rem; // Adjust as needed
+    font-size: 1.2rem; 
     color: #555;
   }
 `;
@@ -195,8 +210,7 @@ const CardTitle = styled.h3`
   font-size: 1.2rem;
   font-weight: 600;
   color: #333;
-  margin-bottom: 8px; // Adjusted margin
-  // flex-grow: 1; // Let description handle more of the growth
+  margin-bottom: 8px; 
 `;
 
 const CardDescription = styled.p`
@@ -212,15 +226,14 @@ const CardAuthorWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: auto; // Pushes author to the bottom of the card content
+  margin-top: auto; 
 `;
 
 const AuthorImagePlaceholder = styled.div`
   width: 30px;
   height: 30px;
-  border-radius: 50%; // Round placeholder
+  border-radius: 50%; 
   background-color: #ccc; 
-  // In a real scenario, replace with an <img> tag and actual image URL
 `;
 
 const CardAuthor = styled.p`
@@ -232,13 +245,13 @@ const CardAuthor = styled.p`
 const LoadMoreButton = styled.button`
   margin-top: 50px;
   padding: 12px 30px;
-  background-color: #f7c948; // Yellow button
+  background-color: #f7c948; 
   color: #333;
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   font-weight: 600;
   border: none;
-  border-radius: 0; // Eckig
+  border-radius: 0; 
   cursor: pointer;
   transition: background-color 0.3s ease;
 
@@ -295,14 +308,13 @@ const BeehiivFeedSection: React.FC = () => {
   const formatDate = (dateString?: string) => {
     if (!dateString) return '';
     try {
-      // Attempt to parse isoDate first, then pubDate
       return new Date(dateString).toLocaleDateString('de-DE', {
         day: '2-digit',
-        month: 'long', // Changed to long month for better readability as in image
+        month: 'long', 
         year: 'numeric',
       });
     } catch (e) {
-      return dateString; // return original if parsing fails
+      return dateString; 
     }
   };
 
@@ -327,10 +339,8 @@ const BeehiivFeedSection: React.FC = () => {
               {item.categories && item.categories.slice(0, 1).map(cat => (
                 <CategoryTag key={cat}>{cat}</CategoryTag>
               ))}
-              {/* Placeholder for +X more categories if needed */}
             </CardCategoryContainer>
             <CardIconsContainer>
-              {/* Replace with actual icons */}
               <span>❤</span> 
               <span>💬</span>
             </CardIconsContainer>

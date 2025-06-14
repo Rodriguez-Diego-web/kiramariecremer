@@ -90,51 +90,74 @@ const SectionTitle = styled(motion.h2)`
 
 const TitleContent = styled.span`
   position: relative;
-  top: -65px;
   display: inline-block;
   z-index: 10;
+  color: #000000;
   
-  @media (max-width: 1024px) and (min-width: 768px) {
-    top: -85px;
-  }
-  
+  /* Mobile */
   @media (max-width: 480px) {
     &::before {
       content: 'Projekte';
     }
-    
     &::after {
       content: '& Kooperationen';
       display: block;
     }
-    
     font-size: 1.8rem;
     text-align: center;
-    color: #000000;
-    top: -70px;
+    top: -75px;
     margin-bottom: -40px;
   }
   
+  /* Tablet und Desktop */
   @media (min-width: 481px) {
     &::before {
       content: 'Projekte & Kooperationen';
     }
+  }
+  
+  /* iPad mini */
+  @media (min-width: 768px) and (max-width: 820px) {
+    top: -80px;
+  }
+  
+  /* iPad Air und iPad Pro */
+  @media (min-width: 821px) and (max-width: 1100px) {
+    top: -60px;
+  }
+  
+  /* Desktop */
+  @media (min-width: 1101px) {
+    top: -60px;
   }
 `;
 
 const NewTitleBackground = styled(motion.div)`
   position: absolute;
   background-color: #e6dfd7; 
-  height: 45px; 
+  height: 55px; 
   width: 100%; 
   z-index: 1; 
-  top: 0; 
   left: 50%; 
   transform: translateX(-50%); 
   box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
   
+  /* Professional fluid positioning - works for all devices */
+  top: clamp(-30px, calc(-30px + (100vw - 480px) * 0.020), -5px);
+  
+  /* Targeted adjustments for problematic ranges */
+  @media (min-width: 768px) and (max-width: 820px) {
+    /* iPad mini - Box tiefer */
+    top: -20px;
+  }
+  
+  @media (min-width: 1000px) {
+    /* iPad Pro und größer - Box tiefer */
+    top: 0px;
+  }
+  
   @media (max-width: 767px) {
-    height: 40px; 
+    height: 30px; 
     top: -30px; 
   }
 `;

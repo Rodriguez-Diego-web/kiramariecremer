@@ -59,7 +59,7 @@ const NewsletterSection: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <NewsletterTitle>
-                In meinem wöchentlichen Newsletter „What The Work?!" schreibe ich jede Woche über Karriere-Hacks, die dich wirklich weiterbringen: klar, praxisnah und auf den Punkt.
+                In meinem wöchentlichen Newsletter "What The Work?!" schreibe ich jede Woche über Karriere-Hacks, die dich wirklich weiterbringen: klar, praxisnah und auf den Punkt.
               </NewsletterTitle>
             </motion.div>
             
@@ -78,7 +78,7 @@ const NewsletterSection: React.FC = () => {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.7 }}
             >
-              <div style={{ marginTop: '20px', marginBottom: '20px', width: '100%', maxWidth: '500px' }}>
+              <IframeContainer>
                 <iframe 
                   src="https://embeds.beehiiv.com/81fc6fc1-ddd0-4079-81fb-899807142dfd?slim=true" 
                   data-test-id="beehiiv-embed" 
@@ -95,7 +95,7 @@ const NewsletterSection: React.FC = () => {
                   }}
                   title="Kira Marie Newsletter Subscription"
                 />
-              </div>
+              </IframeContainer>
             </motion.div>
           </TextContentContainer>
         </NewsletterContent>
@@ -315,6 +315,18 @@ const NewsletterSubtext = styled.p`
   line-height: 1.5;
   color: #555;
   margin: 0;
+`;
+
+const IframeContainer = styled.div`
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  
+  iframe {
+    @media (max-width: 768px) {
+      height: 42px !important;
+    }
+  }
 `;
 
 export default NewsletterSection;

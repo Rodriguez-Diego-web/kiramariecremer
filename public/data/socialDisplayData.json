@@ -1,20 +1,17 @@
 [
   {
     "name": "LinkedIn",
-    "url": "https://de.linkedin.com/in/kiramariecremer",
-    "followersDisplayString": "52K Follower",
-    "rawCount": 52000
+    "count": "52.000",
+    "url": "https://de.linkedin.com/in/kiramariecremer"
   },
   {
     "name": "Instagram",
-    "url": "https://www.instagram.com/kiramariecremer",
-    "followersDisplayString": "12K Follower",
-    "rawCount": 12000
+    "count": "12.000",
+    "url": "https://www.instagram.com/kiramariecremer"
   },
   {
     "name": "Spotify",
-    "url": "https://open.spotify.com/episode/5IRWSdKqXpwKD4QBTqf6GU",
-    "followersDisplayString": "2.7K Hörer",
-    "rawCount": 2700
+    "count": "2.700",
+    "url": "https://open.spotify.com/episode/5IRWSdKqXpwKD4QBTqf6GU"
   }
 ]

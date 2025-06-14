@@ -13,14 +13,14 @@ const CookieBanner: React.FC = () => {
   const [showBanner, setShowBanner] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [consent, setConsent] = useState<CookieConsent>({
-    necessary: true, // Always true, can't be disabled
+    necessary: true, 
     functional: false,
     analytics: false,
     marketing: false
   });
 
   useEffect(() => {
-    // Check if user has already given consent
+    
     const savedConsent = localStorage.getItem('cookie-consent');
     if (!savedConsent) {
       setShowBanner(true);
@@ -32,9 +32,9 @@ const CookieBanner: React.FC = () => {
   }, []);
 
   const loadConsentedServices = (consentData: CookieConsent) => {
-    // Load Google Fonts if functional cookies are accepted
+    
     if (consentData.functional) {
-      // Check if Google Fonts are already loaded
+      
       const existingLink = document.querySelector('link[href*="fonts.googleapis.com"]');
       if (!existingLink) {
         const link = document.createElement('link');
@@ -45,7 +45,7 @@ const CookieBanner: React.FC = () => {
         console.log('Google Fonts loaded via cookie consent');
       }
     } else {
-      // Remove Google Fonts if not consented
+      
       const existingLink = document.querySelector('#google-fonts-stylesheet');
       if (existingLink) {
         existingLink.remove();
@@ -53,18 +53,18 @@ const CookieBanner: React.FC = () => {
       }
     }
 
-    // Analytics tracking (for future use)
+    
     if (consentData.analytics) {
       console.log('Analytics tracking enabled');
-      // Here you could load Google Analytics, etc.
+      
     } else {
       console.log('Analytics tracking disabled');
     }
 
-    // Marketing cookies (for future use)
+    
     if (consentData.marketing) {
       console.log('Marketing cookies enabled');
-      // Here you could load Facebook Pixel, etc.
+      
     } else {
       console.log('Marketing cookies disabled');
     }
@@ -109,7 +109,7 @@ const CookieBanner: React.FC = () => {
   };
 
   const handleConsentChange = (type: keyof CookieConsent, value: boolean) => {
-    if (type === 'necessary') return; // Can't change necessary cookies
+    if (type === 'necessary') return; 
     
     setConsent(prev => ({
       ...prev,

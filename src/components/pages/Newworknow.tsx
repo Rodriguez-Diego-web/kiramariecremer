@@ -19,7 +19,7 @@ const BlueHeaderSection = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 150px; 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     padding: 20px 15px;
     margin-top: 75px;
     min-height: 90px;
@@ -31,7 +31,7 @@ const LogoImage = styled.img`
   max-width: 90%; 
   display: block; 
   margin: 50px auto -10px auto; /* Center the logo properly */
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     max-height: 50px;
     margin: 0 auto;
   }
@@ -43,7 +43,13 @@ const MainContentSection = styled.div`
   margin: 0 auto;
   position: relative; /* For absolute positioned mockups */
   
-  @media (max-width: 768px) {
+  /* iPad mini - mehr Padding für Inhalt */
+  @media (min-width: 768px) and (max-width: 820px) {
+    padding: 40px 30px;
+    overflow-x: hidden; /* Verhindert horizontales Scrollen */
+  }
+  
+  @media (max-width: 767px) {
     padding: 20px 15px;
   }
 `;
@@ -58,7 +64,7 @@ const GridLayout = styled.div`
   gap: 50px;
   align-items: start; /* Changed from center to start for better alignment */
 
-  @media (max-width: 991px) {
+  @media (max-width: 767px) {
     grid-template-columns: 1fr;
     grid-template-areas:
       "headline"
@@ -77,7 +83,7 @@ const GridLayout = styled.div`
 
 const TextContainer = styled.div`
   grid-area: text;
-  @media (max-width: 991px) {
+  @media (max-width: 767px) {
     order: 4;
     margin-top: 30px; /* Reduced margin */
   }
@@ -98,11 +104,11 @@ const Headline = styled.h2`
   max-width: 100%; /* Changed from fixed width */
   width: 100%;
   
-  @media (max-width: 991px) {
+  @media (max-width: 767px) {
     order: 1;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     font-size: 1.8rem;
     margin-bottom: 15px;
   }
@@ -122,11 +128,60 @@ const SubscriptionBarWrapper = styled.div`
   justify-content: flex-start;
   width: 100%;
 
-  @media (max-width: 991px) {
+  @media (max-width: 767px) {
     order: 2;
     margin-top: 15px; 
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
+    justify-content: center; /* Zentriert für Mobile */
+    
+    > div {
+      width: 95% !important; /* Fast volle Breite für Mobile */
+      max-width: 400px !important;
+    }
+    
+    iframe {
+      width: 100% !important;
+      height: 42px !important; /* Angepasste Höhe für Mobile */
+      border-radius: 15px !important;
+      border: 1px solid #8facff !important;
+    }
   }
+  
+  /* iPad mini Input-Feld - volle Breite */
+  @media (min-width: 768px) and (max-width: 820px) {
+    justify-content: flex-start; /* Links ausgerichtet wie Desktop */
+    margin-top: 25px;
+    margin-bottom: 30px;
+    width: 100%;
+    
+    > div {
+      width: 100% !important; /* Volle Breite */
+      max-width: 500px !important; /* Wie Desktop */
+    }
+    
+    iframe {
+      width: 100% !important;
+      height: 41px !important; /* Original Höhe */
+      border-radius: 15px !important; /* Original Border-Radius */
+      border: 1px solid #8facff !important; /* Original Border */
+    }
+  }
+  
+  /* iPad Air und Pro Input-Feld */
+  @media (min-width: 821px) and (max-width: 1024px) {
+    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: 30px;
+    
+    iframe {
+      max-width: 400px !important;
+      height: 44px !important;
+      border-radius: 10px !important;
+      border: 1px solid #8facff !important;
+    }
+  }
+  
+
 `;
 
 const DescriptionText = styled.p`
@@ -136,7 +191,7 @@ const DescriptionText = styled.p`
   color: #333333;
   max-width: 450px;
   
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     font-size: 0.9rem;
     line-height: 1.5;
     max-width: 100%; /* Allow full width on mobile */
@@ -150,14 +205,14 @@ const MockupContainer = styled.div`
   align-items: center;
   position: relative;
   
-  @media (max-width: 991px) {
+  @media (max-width: 767px) {
     order: 3;
     margin-bottom: 15px;
     width: 100%;
     overflow: visible;
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     margin-bottom: 10px;
     padding-top: 20px;
     min-height: 300px;
@@ -203,103 +258,87 @@ const StyledMockupImagesWrapper = styled.div`
     }
   }
   
-  /* iPad Air specific (820x1180) */
-  @media (max-width: 1180px) and (min-width: 820px) {
-    margin-top: 0;
-    min-height: 500px;
-    
-    .mockup-main {
-      left: 5%; /* Much further left */
-      top: -350px;
-      transform: translate(0, 0);
-      img {
-        width: 350px; /* Much smaller for iPad Air */
-        min-width: 350px;
-        height: auto;
-      }
-    }
-    .mockup-secondary {
-      left: 8%; /* Much further left and closer together */
-      top: -150px;
-      transform: translate(0, 0);
-      img {
-        width: 350px; /* Much smaller for iPad Air */
-        min-width: 350px;
-        height: auto;
-      }
-    }
-  }
-  
-  /* Large iPad Pro (1112px) */
-  @media (max-width: 1200px) and (min-width: 992px) {
-    .mockup-main {
-      left: 20%; /* Same positioning as tablet */
-      top: -100px; /* Same positioning as tablet */
-      transform: translate(0, 0);
-      img {
-        width: 400px; /* Slightly larger than tablet */
-        min-width: 400px;
-        height: auto;
-      }
-    }
-    .mockup-secondary {
-      left: 23%; /* Same positioning as tablet */
-      top: -100px; /* Same positioning as tablet */
-      transform: translate(0, 0);
-      img {
-        width: 400px; /* Slightly larger than tablet */
-        min-width: 400px;
-        height: auto;
-      }
-    }
-  }
-  
-  @media (max-width: 991px) {
+  /* iPad mini spezifisch - kleinere Bilder wegen Bildschirmgröße */
+  @media (min-width: 768px) and (max-width: 820px) {
     margin-top: 0;
     min-height: 400px;
     
     .mockup-main {
-      left: 20%; /* Centered better - moved right from 5% */
-      top: -100px; /* Keep the working height */
+      left: 5%; /* Weiter rechts damit nicht abgeschnitten */
+      top: -150px;
       transform: translate(0, 0);
       img {
-        width: 350px; /* Keep the working size */
-        min-width: 350px;
+        width: 380px; /* Kleiner für iPad mini */
+        min-width: 380px;
         height: auto;
       }
     }
     .mockup-secondary {
-      left: 23%; /* Centered better - moved right from 8% */
-      top: -100px; /* Keep the working height */
+      left: 8%; /* Weiter rechts */
+      top: -30px;
       transform: translate(0, 0);
       img {
-        width: 350px; /* Keep the working size */
-        min-width: 350px;
+        width: 380px; /* Kleiner für iPad mini */
+        min-width: 380px;
         height: auto;
       }
     }
   }
   
-  @media (max-width: 768px) {
+  /* iPad Air und Pro - größere Bilder */
+  @media (min-width: 821px) and (max-width: 1024px) {
+    margin-top: 0;
+    min-height: 500px;
+    
+    .mockup-main {
+      left: -5%; /* Weiter links wie im Ziel-Bild */
+      top: -200px;
+      transform: translate(0, 0);
+      img {
+        width: 450px; /* Größer für iPad Air/Pro */
+        min-width: 450px;
+        height: auto;
+      }
+    }
+    .mockup-secondary {
+      left: -2%; /* Weiter links, näher zusammen */
+      top: -50px;
+      transform: translate(0, 0);
+      img {
+        width: 450px; /* Größer für iPad Air/Pro */
+        min-width: 450px;
+        height: auto;
+      }
+    }
+  }
+  
+
+  
+
+  
+
+  
+  /* Mobile - NUR für echte Mobile-Geräte */
+  @media (max-width: 767px) {
     min-height: 350px;
     margin-top: 20px;
     
     .mockup-main {
-      left: 15%; /* Same as desktop */
+      left: 15%;
       top: -20px;
-      transform: translate(0, 0); /* Same as desktop */
+      transform: translate(0, 0);
       img {
-        width: 280px; /* Smaller for mobile */
+        width: 280px;
         min-width: 280px;
         height: auto;
       }
     }
     .mockup-secondary {
-      left: 18%; /* Same as desktop */
+      left: 18%;
       top: -20px;
-      transform: translate(0, 0); /* Same as desktop */
+      transform: translate(0, 0);
       img {
-        width: 280px; /* Smaller for mobile */
+        width: 280px;
         min-width: 280px;
         height: auto;
       }
@@ -358,7 +397,7 @@ const Newworknow: React.FC = () => {
           <Headline>Jede Woche praktische Hacks für mehr Erfolg in deiner Karriere!</Headline>
           <SubscriptionBarWrapper>
             {/* Beehiiv iframe embed anstelle des benutzerdefinierten Formulars */}
-            <div style={{ marginTop: '20px', marginBottom: '20px', width: '100%', maxWidth: '500px' }}>
+            <div style={{ marginTop: '20px', marginBottom: '20px', width: '100%', maxWidth: '100%' }}>
               <iframe 
                 src="https://embeds.beehiiv.com/81fc6fc1-ddd0-4079-81fb-899807142dfd?slim=true" 
                 data-test-id="beehiiv-embed" 
@@ -378,17 +417,17 @@ const Newworknow: React.FC = () => {
             </div>
           </SubscriptionBarWrapper>
           <TextContainer>
-            <div ref={textContainerRef}>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={textInView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
-              >
-                <DescriptionText>
-                  „What The Work?!" ist der Newsletter für alle, die mehr vom Job wollen. Jede Woche gibt's Klartext zu Themen rund um deine Karriere und die neue Arbeitswelt. Mit Hacks, Tipps und Tools, die dich wirklich weiterbringen: Melde dich jetzt an und hol dir Karriere-Input, den du wirklich brauchst!
-                </DescriptionText>
-              </motion.div>
-            </div>
+<div ref={textContainerRef}>
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={textInView ? { opacity: 1 } : {}}
+    transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
+  >
+    <DescriptionText>
+      „What The Work?!" ist der Newsletter für alle, die mehr vom Job wollen. Jede Woche gibt's Klartext zu Themen rund um deine Karriere und die neue Arbeitswelt. Mit Hacks, Tipps und Tools, die dich wirklich weiterbringen: Melde dich jetzt an und hol dir Karriere-Input, den du wirklich brauchst!
+    </DescriptionText>
+  </motion.div>
+</div>
           </TextContainer>
           <MockupContainer ref={mockupContainerRef}>
             <StyledMockupImagesWrapper>

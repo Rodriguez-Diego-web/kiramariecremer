@@ -12,36 +12,31 @@ const SectionWrapper = styled.section`
 
 // The large, overlapping title
 const SectionTitle = styled.h2`
-  font-family: 'Kingdom', serif; /* User-specified Kingdom font */
-  font-size: 5rem; /* Slightly larger if Kingdom font is thinner */
+  font-family: 'Kingdom', serif; 
+  font-size: 5rem; 
   font-weight: normal;
-  color: #000000; /* Black title text */
+  color: #000000; 
   text-align: center;
   
-  position: absolute; /* Absolute positioning within SectionWrapper */
-  /* Top: positions the title down from the (pulled-up) top edge of SectionWrapper. 
-     This needs to be tuned so part of it is over the previous section and part over ContentContainer */
+  position: absolute; 
   top: 50px; 
   left: 0;
   right: 0;
-  z-index: 3; /* Ensure title is above ContentContainer and previous section's end */
+  z-index: 3; 
 
   @media (max-width: 767px) {
     font-size: 3.2rem;
-    top: 70px; /* Leicht nach oben angepasst für die größere Schrift */
+    top: 70px; 
   }
 `;
 
-// Container for the main content (text and button) with a white background
 const ContentContainer = styled.div`
   background-color: #FFFFFF; 
   color: #333333; 
-  /* Padding-top might need to be more if the title dips very low into it, 
-     or rely on title's z-index to float above content. */
-  padding: 50px 20px 20px 20px; /* Reduced top and bottom padding */
+  padding: 50px 20px 20px 20px; 
   text-align: center;
-  position: relative; /* For stacking context, if needed, though title z-index should handle it */
-  z-index: 1; /* Below the SectionTitle */
+  position: relative; 
+  z-index: 1; 
   
   width: 100vw;
   left: 50%;
@@ -50,14 +45,13 @@ const ContentContainer = styled.div`
   margin-right: -50vw;
 `;
 
-// Descriptive text
 const ContactText = styled.p`
   font-size: 1.1rem;
   line-height: 1.7;
   color: #555555; 
   margin: 0 auto 30px auto; 
   max-width: 600px; 
-  position: relative; /* Ensure text is in stacking context of ContentContainer */
+  position: relative; 
   z-index: 1;
 
   @media (max-width: 767px) {
@@ -65,7 +59,6 @@ const ContactText = styled.p`
   }
 `;
 
-// The contact button
 const ContactButton = styled.a`
   display: inline-block;
   background-color: #000000; 
@@ -79,7 +72,7 @@ const ContactButton = styled.a`
   text-transform: uppercase;
   border: none;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  position: relative; /* Ensure button is in stacking context of ContentContainer */
+  position: relative; 
   z-index: 1;
 
   &:hover {

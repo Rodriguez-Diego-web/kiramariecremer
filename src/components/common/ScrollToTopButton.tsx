@@ -6,7 +6,7 @@ import { FiArrowUp } from 'react-icons/fi';
 const ScrollToTopButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Überprüfen, ob der Nutzer gescrollt hat
+
   const toggleVisibility = () => {
     if (window.pageYOffset > 300) {
       setIsVisible(true);
@@ -15,7 +15,7 @@ const ScrollToTopButton: React.FC = () => {
     }
   };
 
-  // Scroll zum Anfang der Seite
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,

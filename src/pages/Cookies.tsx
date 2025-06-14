@@ -62,19 +62,19 @@ const Cookies: React.FC = () => {
         <meta name="description" content="Informationen über die Verwendung von Cookies auf kira-marie.com" />
       </Helmet>
       <Container>
-        <Title>Cookie-Richtlinie</Title>
-        
-        <Section>
-          <SectionTitle>Was sind Cookies?</SectionTitle>
+          <Title>Cookie-Richtlinie</Title>
+          
+          <Section>
+            <SectionTitle>Was sind Cookies?</SectionTitle>
           <Paragraph>
             Cookies sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden, wenn Sie eine Website besuchen.
             Sie helfen dabei, die Website funktionsfähig zu machen und Ihre Nutzererfahrung zu verbessern.
           </Paragraph>
-        </Section>
+          </Section>
 
-        <Section>
-          <SectionTitle>Welche Cookies verwenden wir?</SectionTitle>
-          
+          <Section>
+            <SectionTitle>Welche Cookies verwenden wir?</SectionTitle>
+            
           <Table>
             <thead>
               <tr>
@@ -96,9 +96,9 @@ const Cookies: React.FC = () => {
               </tr>
             </tbody>
           </Table>
-        </Section>
+          </Section>
 
-        <Section>
+          <Section>
           <SectionTitle>Externe Dienste</SectionTitle>
           <Paragraph>
             <strong>Beehiiv Newsletter:</strong> Für unseren Newsletter nutzen wir Beehiiv.
@@ -108,9 +108,9 @@ const Cookies: React.FC = () => {
             <strong>GitHub (CMS):</strong> Unser Content Management System nutzt GitHub als Backend.
             Dies betrifft nur Administratoren, nicht normale Website-Besucher.
           </Paragraph>
-        </Section>
+          </Section>
 
-        <Section>
+          <Section>
           <SectionTitle>Hosting</SectionTitle>
           <Paragraph>
             Diese Website wird über byts.tech gehostet. Der Hosting-Provider kann technisch notwendige Cookies
@@ -119,9 +119,9 @@ const Cookies: React.FC = () => {
           <Paragraph>
             Weitere Informationen finden Sie in der Datenschutzerklärung von byts.tech.
           </Paragraph>
-        </Section>
+          </Section>
 
-        <Section>
+          <Section>
           <SectionTitle>Ihre Kontrolle über Cookies</SectionTitle>
           <Paragraph>
             Sie können Cookies in Ihren Browser-Einstellungen verwalten:
@@ -135,15 +135,15 @@ const Cookies: React.FC = () => {
           <Paragraph>
             Bitte beachten Sie, dass das Blockieren von Cookies die Funktionalität der Website beeinträchtigen kann.
           </Paragraph>
-        </Section>
+          </Section>
 
-        <Section>
-          <SectionTitle>Kontakt</SectionTitle>
+          <Section>
+            <SectionTitle>Kontakt</SectionTitle>
           <Paragraph>
             Bei Fragen zu unserer Cookie-Richtlinie können Sie uns kontaktieren:<br />
             E-Mail: hi@kiramariecremer.de
           </Paragraph>
-        </Section>
+          </Section>
 
         <Paragraph style={{ marginTop: '40px', fontSize: '0.9rem', color: '#666' }}>
           Stand: Dezember 2024

@@ -19,13 +19,16 @@ async function generateAboutData() {
 
     const aboutData = {
       page_title: data.page_title || 'Über Mich',
+      name: data.name_for_tag_and_headline || 'Kira Marie Cremer',
       name_for_tag_and_headline: data.name_for_tag_and_headline || 'Kira Marie Cremer',
       headline_main_text: data.headline_main_text || 'ist eine der führenden deutschen Stimmen im Bereich New Work.',
+      headlineMain: data.headline_main_text || 'ist eine der führenden deutschen Stimmen im Bereich New Work.',
       profile_image: data.profile_image || null,
       left_image_1: data.left_image_1 || null,
       left_image_2: data.left_image_2 || null,
       right_image: data.right_image || null,
-      body: content || ''
+      body: content || '',
+      body_bottom: data.body_bottom || ''
     };
 
     await fs.writeFile(outputFilePath, JSON.stringify(aboutData, null, 2));
@@ -33,13 +36,16 @@ async function generateAboutData() {
   } catch (error) {
     const fallbackData = {
       page_title: 'Über Mich',
+      name: 'Kira Marie Cremer',
       name_for_tag_and_headline: 'Kira Marie Cremer',
       headline_main_text: 'ist eine der führenden deutschen Stimmen im Bereich New Work.',
+      headlineMain: 'ist eine der führenden deutschen Stimmen im Bereich New Work.',
       profile_image: null,
       left_image_1: null,
       left_image_2: null,
       right_image: null,
-      body: 'Inhalt wird geladen...'
+      body: 'Inhalt wird geladen...',
+      body_bottom: ''
     };
 
     await fs.ensureDir(outputDir);

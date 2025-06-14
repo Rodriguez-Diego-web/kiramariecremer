@@ -59,7 +59,7 @@ npm run preview      # Build-Preview testen
 
 ### Decap CMS
 - **URL**: `/admin`
-- **Backend**: GitHub Repository `Rodriguez-Diego-web/kiramarie`
+- **Backend**: GitHub Repository `Rodriguez-Diego-web/kiramariecremer`
 - **Auth**: GitHub OAuth App (Client ID: `0v231iDR9KJEvauhqnf5`)
 
 ### Content-Typen
@@ -104,19 +104,12 @@ Automatisches Deployment bei Push auf `main`:
 ### Regelmäßige Tasks
 - **Newsletter-Feed**: Automatisch via Beehiiv RSS
 - **Podcast-Daten**: Manuell über CMS aktualisierbar
-- **Social Media Zahlen**: Über CMS pflegbar
+- **Social Media Zahlen und vieles mehr**: Über CMS pflegbar
 
 ### Monitoring
 - Build-Status über GitHub Actions
 - Performance über Lighthouse-Metriken
 - Uptime über Server-Monitoring
-
-## 📞 Support
-
-Bei Fragen oder Problemen:
-- **GitHub Issues**: Für technische Probleme
-- **CMS-Zugang**: Über GitHub OAuth
-- **Server-Zugang**: SSH-Keys in GitHub Secrets
 
 ---
 

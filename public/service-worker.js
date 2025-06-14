@@ -23,7 +23,7 @@ self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') {
     return;
   }
-
+  
   if (requestURL.hostname === 'www.kiramaricremer.de' || 
       requestURL.hostname === 'kiramaricremer.de') {
     

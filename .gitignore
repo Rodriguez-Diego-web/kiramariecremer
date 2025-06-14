@@ -31,3 +31,8 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Server-specific files 
+/public_html
+webhook.log
+.htaccess

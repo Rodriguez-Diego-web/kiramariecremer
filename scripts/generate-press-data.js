@@ -105,7 +105,7 @@ async function generatePressData() {
     if (error.code === 'ENOENT' && error.path === pressContentDir) {
       await fs.ensureDir(outputDir);
       await fs.writeFile(outputFile, JSON.stringify([], null, 2));
-    } 
+    }
   }
 }
 

@@ -45,25 +45,25 @@ const Datenschutz: React.FC = () => {
         <meta name="description" content="Datenschutzerklärung und Informationen zum Umgang mit personenbezogenen Daten auf kira-marie.com" />
       </Helmet>
       <Container>
-        <Title>Datenschutzerklärung</Title>
-        
-        <Section>
-          <SectionTitle>1. Verantwortlicher</SectionTitle>
+          <Title>Datenschutzerklärung</Title>
+          
+          <Section>
+            <SectionTitle>1. Verantwortlicher</SectionTitle>
           <Paragraph>
             Verantwortlich für die Datenverarbeitung auf dieser Website ist:<br />
-            Kira Marie Cremer<br />
+              Kira Marie Cremer<br />
             E-Mail: hi@kiramariecremer.de
           </Paragraph>
-        </Section>
+          </Section>
 
-        <Section>
+          <Section>
           <SectionTitle>2. Hosting</SectionTitle>
           <Paragraph>
             Diese Website wird auf einem Server von byts.tech gehostet. Der Anbieter erhebt in sogenannten Logfiles
             folgende Daten, die Ihr Browser übermittelt:
           </Paragraph>
-          <List>
-            <li>IP-Adresse</li>
+            <List>
+              <li>IP-Adresse</li>
             <li>die Adresse der vorher besuchten Website (Referrer-URL)</li>
             <li>Datum und Uhrzeit der Anfrage</li>
             <li>Zeitzonendifferenz zur Greenwich Mean Time</li>
@@ -72,7 +72,7 @@ const Datenschutz: React.FC = () => {
             <li>übertragene Datenmenge</li>
             <li>Website, von der die Anforderung kommt</li>
             <li>Informationen zu Browser und Betriebssystem</li>
-          </List>
+            </List>
           <Paragraph>
             Das ist erforderlich, um unsere Website anzuzeigen und die Stabilität und Sicherheit zu gewährleisten.
             Dies entspricht unserem berechtigten Interesse im Sinne des Art. 6 Abs. 1 lit. f DSGVO.
@@ -85,9 +85,9 @@ const Datenschutz: React.FC = () => {
             Wir verwenden Decap CMS mit GitHub als Backend für die Verwaltung unserer Inhalte.
             Dabei werden keine personenbezogenen Daten von Website-Besuchern verarbeitet.
           </Paragraph>
-        </Section>
+          </Section>
 
-        <Section>
+          <Section>
           <SectionTitle>4. Newsletter (Beehiiv)</SectionTitle>
           <Paragraph>
             Für unseren Newsletter nutzen wir den Dienst Beehiiv. Wenn Sie sich für unseren Newsletter anmelden,
@@ -97,9 +97,9 @@ const Datenschutz: React.FC = () => {
             Rechtsgrundlage ist Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO.
             Sie können Ihre Einwilligung jederzeit widerrufen, indem Sie sich vom Newsletter abmelden.
           </Paragraph>
-        </Section>
+          </Section>
 
-        <Section>
+          <Section>
           <SectionTitle>5. Ihre Rechte</SectionTitle>
           <Paragraph>
             Sie haben folgende Rechte:
@@ -113,15 +113,15 @@ const Datenschutz: React.FC = () => {
             <li>Widerspruchsrecht gegen die Verarbeitung</li>
             <li>Recht auf Beschwerde bei einer Aufsichtsbehörde</li>
           </List>
-        </Section>
+          </Section>
 
-        <Section>
+          <Section>
           <SectionTitle>6. Kontakt</SectionTitle>
           <Paragraph>
             Bei Fragen zum Datenschutz können Sie sich jederzeit an uns wenden:<br />
             E-Mail: hi@kiramariecremer.de
           </Paragraph>
-        </Section>
+          </Section>
 
         <Paragraph style={{ marginTop: '40px', fontSize: '0.9rem', color: '#666' }}>
           Stand: Dezember 2024

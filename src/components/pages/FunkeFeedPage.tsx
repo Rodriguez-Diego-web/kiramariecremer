@@ -337,9 +337,10 @@ const FunkeFeedPage: React.FC = () => {
         return response.json();
       })
       .then((data: { all_episodes: Episode[] }) => {
-        setAllEpisodes(data.all_episodes);
+        const episodes = data.all_episodes || [];
+        setAllEpisodes(episodes);
         // Setze initial die ersten 4 Episoden als sichtbar
-        setVisibleEpisodes(data.all_episodes.slice(0, visibleCount));
+        setVisibleEpisodes(episodes.slice(0, visibleCount));
       })
       .catch(error => {
         console.error("Could not fetch podcast episodes:", error);
@@ -375,7 +376,7 @@ const FunkeFeedPage: React.FC = () => {
       <LatestEpisodesSection>
         <SectionTitle>Neueste Folgen</SectionTitle>
         <ContentWrapper>
-          {visibleEpisodes.map((episode: Episode) => (
+          {visibleEpisodes && visibleEpisodes.length > 0 ? visibleEpisodes.map((episode: Episode) => (
             <React.Fragment key={episode.id}>
               <EpisodeCardWrapper>
                 <EpisodeImage src={episode.imageUrl} alt={episode.altText} />
@@ -398,8 +399,10 @@ const FunkeFeedPage: React.FC = () => {
               </EpisodeCardWrapper>
               <StyledDivider />
             </React.Fragment>
-          ))}
-          {visibleEpisodes.length < allEpisodes.length && (
+          )) : (
+            <p>Keine Episoden verfügbar.</p>
+          )}
+          {visibleEpisodes && allEpisodes && visibleEpisodes.length < allEpisodes.length && (
             <LoadMoreButton onClick={loadMoreEpisodes}>MEHR LADEN</LoadMoreButton>
           )}
         </ContentWrapper>

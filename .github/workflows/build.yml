@@ -1,0 +1,55 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    # 1. Code auschecken
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    # 2. Node.js Setup
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    # 3. Dependencies installieren
+    - name: Install dependencies
+      run: npm ci
+    
+    # 4. Daten Dateien generieren
+    - name: Generate data files
+      run: |
+        node scripts/generate-press-data.js
+        node scripts/generate-beehiiv-feed-data.js
+        node scripts/generate-podcast-data.js
+        node scripts/generate-testimonials-data.js
+        node scripts/generate-whatthework-testimonials-data.js
+        node scripts/generate-partner-logos-data.js
+        node scripts/generate-about-data.js
+        node scripts/generate-social-display-data.js
+        node scripts/generate-seo-data.js
+        node scripts/generate-whatthework-about-data.js
+    
+    # 5. Build ausführen
+    - name: Build project
+      run: npm run build
+    
+    # 6. Test ausführen (optional)
+    - name: Test project
+      run: npm test -- --coverage --passWithNoTests
+    
+    # 7. Build erfolgreich
+    - name: Build complete
+      run: |
+        echo "✅ Build successful!"
+        echo "Ready for deployment via webhook" 

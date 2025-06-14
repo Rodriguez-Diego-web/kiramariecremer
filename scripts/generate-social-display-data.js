@@ -29,7 +29,7 @@ async function generateSocialDisplayData() {
     await fs.ensureDir(outputDir);
 
     const inputData = await fs.readJson(inputFilePath);
-    
+
     if (!inputData.platforms || !Array.isArray(inputData.platforms)) {
       throw new Error('Invalid social stats data: platforms array not found');
     }
@@ -40,7 +40,7 @@ async function generateSocialDisplayData() {
       }
 
       return {
-        name: platform.name,
+      name: platform.name,
         count: platform.count.toLocaleString('de-DE'),
         url: platform.url
       };
