@@ -30,6 +30,33 @@ if [ -d "public_html" ]; then
 fi
 mv build public_html
 
+# Manually copy public assets that React doesn't copy automatically
+echo "📂 Copying additional assets from public/..."
+if [ -d "public/images" ]; then
+    cp -r public/images public_html/
+    echo "✅ Images copied"
+fi
+
+if [ -d "public/fonts" ]; then
+    cp -r public/fonts public_html/
+    echo "✅ Fonts copied"
+fi
+
+if [ -d "public/videos" ]; then
+    cp -r public/videos public_html/
+    echo "✅ Videos copied"
+fi
+
+if [ -d "public/uploads" ]; then
+    cp -r public/uploads public_html/
+    echo "✅ Uploads copied"
+fi
+
+if [ -d "public/data" ]; then
+    cp -r public/data public_html/
+    echo "✅ Data files copied"
+fi
+
 echo "🔧 Configuring server files for SPA routing..."
 
 # Ensure .htaccess is in the root
