@@ -50,9 +50,60 @@ else
     echo "⚠️ No web.config found"
 fi
 
+# Copy asset configuration for server admin
+if [ -f "apache-assets-config.txt" ]; then
+    cp apache-assets-config.txt public_html/apache-assets-config.txt
+    echo "✅ Apache asset configuration copied for server admin reference"
+else
+    echo "⚠️ No apache-assets-config.txt found"
+fi
+
 # List final structure
 echo "📂 Final public_html structure:"
 ls -la public_html/ | head -10
+
+# Check for specific assets that were causing 404 errors
+echo ""
+echo "🔍 Asset Verification:"
+echo "Checking for critical assets..."
+
+# Check fonts
+if [ -f "public_html/fonts/optimized/Kingdom-Regular.woff2" ]; then
+    echo "✅ Kingdom-Regular.woff2 found ($(ls -lh public_html/fonts/optimized/Kingdom-Regular.woff2 | awk '{print $5}'))"
+else
+    echo "❌ Kingdom-Regular.woff2 MISSING"
+fi
+
+if [ -f "public_html/fonts/optimized/Kingdom-Regular.woff" ]; then
+    echo "✅ Kingdom-Regular.woff found ($(ls -lh public_html/fonts/optimized/Kingdom-Regular.woff | awk '{print $5}'))"
+else
+    echo "❌ Kingdom-Regular.woff MISSING"
+fi
+
+# Check images
+if [ -f "public_html/images/KMClogo.webp" ]; then
+    echo "✅ KMClogo.webp found"
+else
+    echo "❌ KMClogo.webp MISSING"
+fi
+
+if [ -f "public_html/images/img_5189.jpg" ]; then
+    echo "✅ img_5189.jpg found"
+else
+    echo "❌ img_5189.jpg MISSING"
+fi
+
+if [ -f "public_html/images/img_5998.jpg" ]; then
+    echo "✅ img_5998.jpg found"
+else
+    echo "❌ img_5998.jpg MISSING"
+fi
+
+if [ -f "public_html/images/img2.jpg" ]; then
+    echo "✅ img2.jpg found"
+else
+    echo "❌ img2.jpg MISSING"
+fi
 
 echo "✅ Build complete! Website ready in public_html/"
 echo "🌐 Website can now be served from public_html/"
