@@ -1,0 +1,54 @@
+# Apache Virtual Host Konfiguration für SPA Routing
+# Diese Konfiguration muss vom Server-Admin aktiviert werden
+
+<VirtualHost *:443>
+    ServerName www.kiramariecremer.de
+    DocumentRoot /path/to/public_html
+    
+    # SSL Configuration (bereits vorhanden)
+    SSLEngine on
+    SSLCertificateFile /path/to/certificate.crt
+    SSLCertificateKeyFile /path/to/private.key
+    
+    # WICHTIG: .htaccess Dateien erlauben
+    <Directory "/path/to/public_html">
+        AllowOverride All
+        Require all granted
+        
+        # Falls AllowOverride nicht möglich ist, diese Regeln direkt hier:
+        RewriteEngine On
+        
+        # Skip existing files and directories
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        
+        # Skip admin and api paths
+        RewriteCond %{REQUEST_URI} !^/(admin|api|uploads|images|css|js|fonts)/
+        
+        # Redirect everything else to index.html for SPA routing
+        RewriteRule ^(.*)$ /index.html [L,QSA]
+    </Directory>
+    
+    # mod_rewrite muss aktiviert sein
+    LoadModule rewrite_module modules/mod_rewrite.so
+    
+    # Optional: Cache-Headers für bessere Performance
+    <LocationMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|otf)$">
+        ExpiresActive On
+        ExpiresDefault "access plus 1 month"
+    </LocationMatch>
+</VirtualHost>
+
+# MINIMAL-LÖSUNG (falls oben zu komplex):
+# Nur diese eine Zeile in der VirtualHost:
+# AllowOverride All
+
+# PROBLEM-DIAGNOSE:
+# 1. Teste: curl -I https://www.kiramariecremer.de/whatthework
+# 2. Erwartung: 200 OK (mit index.html Inhalt)
+# 3. Aktuell: 404 Not Found
+# 4. Ursache: .htaccess wird ignoriert (AllowOverride None)
+
+# MOD_REWRITE PRÜFEN:
+# apache2ctl -M | grep rewrite
+# (sollte "rewrite_module" zeigen) 
