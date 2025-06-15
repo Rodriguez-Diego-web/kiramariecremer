@@ -80,7 +80,8 @@ if (isset($_GET['code'])) {
             'debug_info' => [
                 'client_id' => $client_id,
                 'code_length' => strlen($code),
-                'secret_set' => !empty($client_secret)
+                'secret_set' => !empty($client_secret),
+                'secret_length' => strlen($client_secret)
             ]
         ]);
     }
