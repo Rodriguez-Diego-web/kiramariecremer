@@ -29,17 +29,9 @@ server {
         add_header Cache-Control "public, immutable";
     }
     
-    # API und Admin-Pfade direkt weiterleiten
+    # Admin-Bereich (CMS)
     location ^~ /admin/ {
-        try_files $uri $uri/ =404;
-    }
-    
-    location ^~ /api/ {
-        try_files $uri $uri/ =404;
-    }
-    
-    location ^~ /webhook.php {
-        try_files $uri =404;
+        try_files $uri $uri/ /admin/index.html;
     }
     
     # Static assets direkt ausliefern
@@ -80,4 +72,5 @@ server {
 # 1. Diese Konfiguration in /etc/nginx/sites-available/kiramariecremer.de einsetzen
 # 2. nginx -t (Syntax check)
 # 3. systemctl reload nginx
-# 4. /pfad/zur/website/ durch echten Pfad ersetzen 
+# 4. /pfad/zur/website/ durch echten Pfad ersetzen
+# 5. GitHub OAuth App Redirect URI ändern zu: https://www.kiramariecremer.de/admin/ 

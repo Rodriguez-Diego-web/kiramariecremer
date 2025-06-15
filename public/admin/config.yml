@@ -1,10 +1,10 @@
 backend:
   name: github
-  repo: Rodriguez-Diego-web/kiramariecremer
+  repo: diegopadilla/kira
   branch: main
-  # Use GitHub OAuth with PHP handler
-  base_url: https://www.kiramariecremer.de
-  auth_endpoint: /admin/auth.php
+  # Verwende GitHub's implicit flow (kein Server-side auth nötig)
+  auth_type: implicit
+  app_id: Ov23liDR9KJEvauhqnf5
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
@@ -64,34 +64,6 @@ collections:
       - {label: "Zitat", name: "quote", widget: "text"}
       - {label: "Bild", name: "image", widget: "image", required: false}
       - {label: "Reihenfolge", name: "order", widget: "number", required: false}
-
-  - name: "partner_logos"
-    label: "Partner Logos"
-    folder: "src/content/partner_logos"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Name", name: "name", widget: "string"}
-      - {label: "Bild", name: "image", widget: "image"}
-      - {label: "Alt Text", name: "alt_text", widget: "string"}
-      - {label: "Reihenfolge", name: "order", widget: "number", required: false}
-
-  - name: "about"
-    label: "Über mich"
-    files:
-      - label: "Über mich Seite"
-        name: "about"
-        file: "src/content/about.md"
-        fields:
-          - {label: "Name", name: "name", widget: "string"}
-          - {label: "Seitentitel", name: "page_title", widget: "string"}
-          - {label: "Haupttext", name: "body", widget: "markdown"}
-          - {label: "Untertitel", name: "headlineMain", widget: "markdown"}
-          - {label: "Unterer Text", name: "body_bottom", widget: "markdown"}
-          - {label: "Profilbild", name: "profile_image", widget: "image"}
-          - {label: "Linkes Bild 1", name: "left_image_1", widget: "image"}
-          - {label: "Linkes Bild 2", name: "left_image_2", widget: "image"}
-          - {label: "Rechtes Bild", name: "right_image", widget: "image"}
 
   - name: "whatthework-about"
     label: "What The Work - Über"
