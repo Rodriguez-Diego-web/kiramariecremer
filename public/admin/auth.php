@@ -37,6 +37,7 @@ if (isset($_GET['code'])) {
         'client_id' => $client_id,
         'client_secret' => $client_secret,
         'code' => $code,
+        'redirect_uri' => 'https://www.kiramariecremer.de/admin/auth.php'
     ];
     
     // Debug: Show what we're sending (without the full secret)
