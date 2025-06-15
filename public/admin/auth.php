@@ -47,9 +47,6 @@ if (isset($_GET['code'])) {
     $context = stream_context_create($options);
     $response = @file_get_contents('https://github.com/login/oauth/access_token', false, $context);
     
-    // Get HTTP response headers
-    $http_response_header_local = $http_response_header ?? [];
-    
     if ($response === FALSE) {
         http_response_code(500);
         echo json_encode([
@@ -59,7 +56,13 @@ if (isset($_GET['code'])) {
         exit;
     }
     
+    // Try to decode as JSON first
     $token_data = json_decode($response, true);
+    
+    // If not JSON, it might be form-encoded response
+    if ($token_data === null && $response) {
+        parse_str($response, $token_data);
+    }
     
     if (isset($token_data['access_token'])) {
         // Return token to CMS
@@ -73,6 +76,7 @@ if (isset($_GET['code'])) {
         echo json_encode([
             'error' => 'Failed to obtain access token', 
             'github_response' => $token_data,
+            'raw_response' => $response,
             'debug_info' => [
                 'client_id' => $client_id,
                 'code_length' => strlen($code),
