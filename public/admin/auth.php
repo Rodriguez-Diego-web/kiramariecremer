@@ -2,6 +2,9 @@
 // GitHub OAuth Handler für Decap CMS
 // Client ID: Ov23liDR9KJEvauhqnf5
 
+// Enable debug mode if requested
+$debug = isset($_GET['debug']) && $_GET['debug'] === 'true';
+
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
@@ -28,11 +31,30 @@ if (isset($_GET['code'])) {
     // Log the incoming request for debugging
     error_log("OAuth callback received - Code: " . substr($code, 0, 10) . "..., State: " . $state);
     
+    $token_url = 'https://github.com/login/oauth/access_token';
+    
     $data = [
         'client_id' => $client_id,
         'client_secret' => $client_secret,
         'code' => $code,
     ];
+    
+    // Debug: Show what we're sending (without the full secret)
+    if ($debug) {
+        echo json_encode([
+            'debug' => true,
+            'step' => 'token_exchange',
+            'request_url' => $token_url,
+            'request_data' => [
+                'client_id' => $client_id,
+                'client_secret' => substr($client_secret, 0, 4) . '...' . substr($client_secret, -4),
+                'code' => substr($code, 0, 10) . '...',
+            ],
+            'request_method' => 'POST',
+            'content_type' => 'application/x-www-form-urlencoded'
+        ]);
+        exit;
+    }
     
     // GitHub expects form-encoded data, NOT JSON!
     $options = [
@@ -49,7 +71,7 @@ if (isset($_GET['code'])) {
     ];
     
     $context = stream_context_create($options);
-    $response = @file_get_contents('https://github.com/login/oauth/access_token', false, $context);
+    $response = @file_get_contents($token_url, false, $context);
     
     // Get response headers for debugging
     $response_headers = $http_response_header ?? [];
