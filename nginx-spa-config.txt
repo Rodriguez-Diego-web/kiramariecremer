@@ -9,6 +9,11 @@ server {
     root /pfad/zur/website/public_html;
     index index.html index.htm;
     
+    # MIME Types für YAML Dateien
+    location ~ \.(yml|yaml)$ {
+        add_header Content-Type text/yaml;
+    }
+    
     # Gzip Kompression
     gzip on;
     gzip_vary on;
