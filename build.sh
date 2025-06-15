@@ -149,7 +149,7 @@ else
 fi
 
 echo "✅ Build complete! Website ready in public_html/"
-echo "🌐 Website can now be served from public_html/"
+echo "🌐 Website can now be served from public_html/" 
 echo ""
 echo "🔍 SPA Routing Debug Info:"
 echo "- .htaccess should be in public_html/.htaccess"

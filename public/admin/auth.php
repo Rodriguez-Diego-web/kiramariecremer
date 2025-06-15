@@ -1,6 +1,6 @@
 <?php
 // GitHub OAuth Handler für Decap CMS
-// Client ID: Ov23liDR9KJEvauhqnf5
+// Client ID: 0v23liDR9KJEvauhqnf5
 
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit(0);
 }
 
-$client_id = 'Ov23liDR9KJEvauhqnf5';
+$client_id = '0v23liDR9KJEvauhqnf5';
 $client_secret = getenv('GITHUB_CLIENT_SECRET');
 
 if (!$client_secret) {
