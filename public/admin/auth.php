@@ -46,13 +46,31 @@ if (isset($_GET['code'])) {
     $context = stream_context_create($options);
     $response = @file_get_contents('https://github.com/login/oauth/access_token', false, $context);
     
+    // Get HTTP response headers
+    $http_response_header_local = $http_response_header ?? [];
+    
     if ($response === FALSE) {
         http_response_code(500);
-        echo json_encode(['error' => 'Failed to connect to GitHub', 'detail' => 'Could not reach GitHub API']);
+        echo json_encode([
+            'error' => 'Failed to connect to GitHub', 
+            'detail' => 'Could not reach GitHub API',
+            'http_headers' => $http_response_header_local
+        ]);
         exit;
     }
     
     $token_data = json_decode($response, true);
+    
+    // If response is not JSON, show raw response
+    if ($token_data === null && $response !== '') {
+        http_response_code(400);
+        echo json_encode([
+            'error' => 'Invalid response from GitHub',
+            'raw_response' => substr($response, 0, 500), // First 500 chars
+            'http_headers' => $http_response_header_local
+        ]);
+        exit;
+    }
     
     if (isset($token_data['access_token'])) {
         // Return token to CMS
@@ -66,10 +84,13 @@ if (isset($_GET['code'])) {
         echo json_encode([
             'error' => 'Failed to obtain access token', 
             'github_response' => $token_data,
+            'raw_response' => $response ? substr($response, 0, 500) : null,
+            'http_headers' => $http_response_header_local,
             'debug_info' => [
                 'client_id' => $client_id,
                 'code_length' => strlen($code),
-                'secret_set' => !empty($client_secret)
+                'secret_set' => !empty($client_secret),
+                'secret_length' => strlen($client_secret)
             ]
         ]);
     }
