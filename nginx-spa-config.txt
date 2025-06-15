@@ -72,10 +72,3 @@ server {
     # Error pages
     error_page 404 /index.html;
 }
-
-# WICHTIGE SCHRITTE FÜR FLORIAN:
-# 1. Diese Konfiguration in /etc/nginx/sites-available/kiramariecremer.de einsetzen
-# 2. nginx -t (Syntax check)
-# 3. systemctl reload nginx
-# 4. /pfad/zur/website/ durch echten Pfad ersetzen
-# 5. GitHub OAuth App Redirect URI ändern zu: https://www.kiramariecremer.de/admin/ 
