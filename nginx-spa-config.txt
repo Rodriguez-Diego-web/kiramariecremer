@@ -34,6 +34,14 @@ server {
         add_header Cache-Control "public, immutable";
     }
     
+    # PHP-Verarbeitung für Admin-Bereich (MUSS VOR dem Admin-Block stehen!)
+    location ~ ^/admin/.*\.php$ {
+        fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;  # Oder php7.4-fpm.sock je nach PHP-Version
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+    
     # Admin-Bereich (CMS)
     location ^~ /admin/ {
         try_files $uri $uri/ /admin/index.html;
