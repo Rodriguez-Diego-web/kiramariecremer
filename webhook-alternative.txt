@@ -1,0 +1,46 @@
+ALTERNATIVE WEBHOOK-LÖSUNG FÜR NGINX (OHNE PHP)
+
+Da Nginx PHP nicht ausführt, hier eine Alternative:
+
+OPTION 1: GitHub Actions (Empfohlen)
+=====================================
+Erstelle .github/workflows/deploy.yml:
+
+name: Deploy to Server
+on:
+  push:
+    branches: [ main ]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            cd /pfad/zur/website
+            git pull origin main
+            ./build.sh
+
+OPTION 2: Webhook Service (z.B. Hookdeck)
+========================================
+1. Hookdeck.com Account erstellen
+2. Webhook URL: https://events.hookdeck.com/e/src_xxx
+3. Destination: HTTP POST zu eigenem Script
+
+OPTION 3: Manuelles Deployment
+==============================
+Florian macht bei jedem Update:
+cd /pfad/zur/website && git pull origin main && ./build.sh
+
+SOFORT-FIX:
+===========
+Florian muss JETZT manuell pullen:
+cd /pfad/zur/website
+git pull origin main  
+./build.sh
+
+Dann funktioniert /admin mit GitHub OAuth! 
