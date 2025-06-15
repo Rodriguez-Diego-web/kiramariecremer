@@ -15,7 +15,7 @@ collections:
     folder: "src/content/seo"
     create: true
     slug: "{{slug}}"
-        fields:
+    fields:
       - {label: "Titel", name: "title", widget: "string"}
       - {label: "Beschreibung", name: "description", widget: "text"}
       - {label: "Keywords", name: "keywords", widget: "string", required: false}
@@ -84,7 +84,7 @@ collections:
     folder: "src/content/social-display"
     create: true
     slug: "{{slug}}"
-        fields:
+    fields:
       - {label: "Plattform Name", name: "name", widget: "string"}
       - {label: "URL", name: "url", widget: "string"}
       - {label: "Follower Anzahl (Anzeige)", name: "followersDisplayString", widget: "string", hint: "z.B. '52.000' oder '11.5K'"}
