@@ -12,11 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 $client_id = 'Ov23liDR9KJEvauhqnf5';
-$client_secret = getenv('GITHUB_CLIENT_SECRET'); // Florian hat das schon gesetzt!
+$client_secret = getenv('GITHUB_CLIENT_SECRET');
 
 if (!$client_secret) {
     http_response_code(500);
-    echo json_encode(['error' => 'GitHub Client Secret not configured']);
+    echo json_encode(['error' => 'GitHub Client Secret not configured', 'detail' => 'Environment variable GITHUB_CLIENT_SECRET is not set']);
     exit;
 }
 
@@ -38,16 +38,17 @@ if (isset($_GET['code'])) {
                 "User-Agent: kira-cms\r\n"
             ],
             'method' => 'POST',
-            'content' => json_encode($data)
+            'content' => json_encode($data),
+            'ignore_errors' => true // Get response even on HTTP error
         ]
     ];
     
     $context = stream_context_create($options);
-    $response = file_get_contents('https://github.com/login/oauth/access_token', false, $context);
+    $response = @file_get_contents('https://github.com/login/oauth/access_token', false, $context);
     
     if ($response === FALSE) {
         http_response_code(500);
-        echo json_encode(['error' => 'Failed to get access token']);
+        echo json_encode(['error' => 'Failed to connect to GitHub', 'detail' => 'Could not reach GitHub API']);
         exit;
     }
     
@@ -60,8 +61,17 @@ if (isset($_GET['code'])) {
             'provider' => 'github'
         ]);
     } else {
+        // Log the actual error from GitHub
         http_response_code(400);
-        echo json_encode(['error' => 'Failed to obtain access token', 'response' => $token_data]);
+        echo json_encode([
+            'error' => 'Failed to obtain access token', 
+            'github_response' => $token_data,
+            'debug_info' => [
+                'client_id' => $client_id,
+                'code_length' => strlen($code),
+                'secret_set' => !empty($client_secret)
+            ]
+        ]);
     }
 } else {
     // Step 1: Redirect to GitHub OAuth
@@ -72,7 +82,7 @@ if (isset($_GET['code'])) {
         'client_id' => $client_id,
         'redirect_uri' => $redirect_uri,
         'scope' => $scope,
-        'state' => bin2hex(random_bytes(16)) // CSRF protection
+        'state' => bin2hex(random_bytes(16))
     ]);
     
     header("Location: $auth_url");
