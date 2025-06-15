@@ -30,16 +30,17 @@ if (isset($_GET['code'])) {
         'code' => $code,
     ];
     
+    // GitHub expects form-encoded data, NOT JSON!
     $options = [
         'http' => [
             'header' => [
-                "Content-type: application/json\r\n",
+                "Content-type: application/x-www-form-urlencoded\r\n",
                 "Accept: application/json\r\n",
                 "User-Agent: kira-cms\r\n"
             ],
             'method' => 'POST',
-            'content' => json_encode($data),
-            'ignore_errors' => true // Get response even on HTTP error
+            'content' => http_build_query($data), // Form-encoded, not JSON!
+            'ignore_errors' => true
         ]
     ];
     
@@ -53,24 +54,12 @@ if (isset($_GET['code'])) {
         http_response_code(500);
         echo json_encode([
             'error' => 'Failed to connect to GitHub', 
-            'detail' => 'Could not reach GitHub API',
-            'http_headers' => $http_response_header_local
+            'detail' => 'Could not reach GitHub API'
         ]);
         exit;
     }
     
     $token_data = json_decode($response, true);
-    
-    // If response is not JSON, show raw response
-    if ($token_data === null && $response !== '') {
-        http_response_code(400);
-        echo json_encode([
-            'error' => 'Invalid response from GitHub',
-            'raw_response' => substr($response, 0, 500), // First 500 chars
-            'http_headers' => $http_response_header_local
-        ]);
-        exit;
-    }
     
     if (isset($token_data['access_token'])) {
         // Return token to CMS
@@ -84,13 +73,10 @@ if (isset($_GET['code'])) {
         echo json_encode([
             'error' => 'Failed to obtain access token', 
             'github_response' => $token_data,
-            'raw_response' => $response ? substr($response, 0, 500) : null,
-            'http_headers' => $http_response_header_local,
             'debug_info' => [
                 'client_id' => $client_id,
                 'code_length' => strlen($code),
-                'secret_set' => !empty($client_secret),
-                'secret_length' => strlen($client_secret)
+                'secret_set' => !empty($client_secret)
             ]
         ]);
     }
