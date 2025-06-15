@@ -57,6 +57,14 @@ if [ -d "public/data" ]; then
     echo "✅ Data files copied"
 fi
 
+# Copy admin directory for CMS
+if [ -d "public/admin" ]; then
+    cp -r public/admin public_html/
+    echo "✅ Admin CMS copied"
+else
+    echo "❌ ERROR: No admin directory found!"
+fi
+
 echo "🔧 Configuring server files for SPA routing..."
 
 # Ensure .htaccess is in the root
