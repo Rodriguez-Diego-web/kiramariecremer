@@ -2,9 +2,9 @@ backend:
   name: github
   repo: diegopadilla/kira
   branch: main
-  # Verwende GitHub's implicit flow (kein Server-side auth nötig)
-  auth_type: implicit
-  app_id: Ov23liDR9KJEvauhqnf5
+  # Use GitHub OAuth with PHP handler (Florian hat PHP-FPM eingerichtet)
+  base_url: https://www.kiramariecremer.de
+  auth_endpoint: /admin/auth.php
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
