@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: diegopadilla/kira
+  repo: Rodriguez-Diego-web/kiramariecremer
   branch: main
   # Use GitHub OAuth with PHP handler (Florian hat PHP-FPM eingerichtet)
   base_url: https://www.kiramariecremer.de
