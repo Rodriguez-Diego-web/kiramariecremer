@@ -81,3 +81,9 @@ server {
     # Error pages
     error_page 404 /index.html;
 }
+
+# WICHTIGE HINWEISE FÜR FLORIAN:
+# 1. PHP-FPM Socket-Pfad ist korrekt: unix:/var/www/vhosts/system/kiramariecremer.de/php-fpm.sock
+# 2. Die PHP Location für auth.php MUSS VOR dem Admin-Block stehen (bereits korrekt)
+# 3. GitHub Client Secret als Environment Variable setzen: GITHUB_CLIENT_SECRET="secret-wert"
+# 4. Nach Änderungen: nginx -s reload && systemctl restart php-fpm
